@@ -19,32 +19,78 @@
 """
 # files
 import classes
+import graphics
 
 #libraries
 import math
+import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
-	p0 = [1., 0., 0.] #km
-	v0 = [0., 0., 0.] #km/s
-	m = 1.            #kg
+	p0 = [5e-2, 1e-3, 0.] #km
+	v0 = [0., 0., 0.]     #km/s
+	m = 1e7               #kg
 	
 	p1 = [0., 0., 0.] #km
-	v1 = [1., 0., 0.]  #km/s
-	m1 = 1e2           #kg
+	v1 = [1., 1., 0.]  #km/s
+	m1 = 1.           #kg
 	
 	dt = 1e-2            #sec
 
 	A = classes.Particle(p0, v0, m)
 	B = classes.Particle(p1, v1, m1)
 	
-	A.setdt(dt)
+	B.setdt(dt)
+	
+	x = []
+	y = []
+	
+	x.append(0.)
+	y.append(B.getPosition())
+	
+	#LastX = B.getPosition()[0]
 
-	for t in range(100):
-		#print(A.getPosition())
-
-		#A.integrate(dt,p1,m1)
-		
-		A.integrate(B)
+	#2D
+	"""
+	v = []
+	a = []
+	
+	v.append(B.getVelocity()[0])
+	a.append(0.)
+	v1 = B.getVelocity()[0]
+	
+	for t in range(1,100):
+		LastX = B.getPosition()[0]
+		lastV = v1
+		B.integrate(A)
 
 		if t%3 == 2:
-			print(A.getPosition())
+			print(B.getPosition())
+		
+		x.append(float(t)*dt)
+		y.append(B.getPosition()[0])
+		v1 = (B.getPosition()[0] - LastX)/B.dt
+		v.append(v1)
+		a.append((v1 - lastV)/B.dt)
+	
+	fig, ax = plt.subplots(3)
+	graphics.plotting(fig, ax[0], x, y, "", "", "", "", "distance [$km$]")
+	graphics.plotting(fig, ax[1], x, v, "", "", "", "", "velocity [$km/s$]")
+	graphics.plotting(fig, ax[2], x, a, "", "", "", "time [$sec$]", "acceleration [$km/s^2$]")
+	"""
+	
+	
+	#3D
+	for t in range(1,100):
+		B.integrate(A)
+		x.append(float(t)*dt)
+		y.append(B.getPosition())
+		
+	fig = plt.figure()
+	ax = fig.add_subplot(111, projection='3d')
+	graphics.plotting3D(fig, ax, y)
+		
+	posA = A.getPosition()
+	ax.scatter(posA[0], posA[1], posA[2], marker="o")
+	
+	
+	plt.show()
