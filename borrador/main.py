@@ -24,23 +24,27 @@ import classes
 import math
 
 if __name__ == "__main__":
-	p0 = [0., 0., 0.] #m
-	v0 = [1., 1., 1.] #m/s
+	p0 = [1., 0., 0.] #km
+	v0 = [0., 0., 0.] #km/s
 	m = 1.            #kg
 	
-	p1 = [10., 0., 0.] #m
-	v1 = [0., 0., 0.] #m/s
-	m1 = 1e24            #kg
+	p1 = [0., 0., 0.] #km
+	v1 = [1., 0., 0.]  #km/s
+	m1 = 1e2           #kg
 	
-	dt = 1.           #sec
+	dt = 1e-2            #sec
 
 	A = classes.Particle(p0, v0, m)
-	print(A.getPosition())
+	B = classes.Particle(p1, v1, m1)
+	
+	A.setdt(dt)
 
-	for t in range(60):
+	for t in range(100):
 		#print(A.getPosition())
 
-		A.integrate(dt,p1,m1)
+		#A.integrate(dt,p1,m1)
+		
+		A.integrate(B)
 
 		if t%3 == 2:
 			print(A.getPosition())
