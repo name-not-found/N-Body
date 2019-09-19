@@ -1,5 +1,5 @@
 import math
-#composición de una particula
+#particle composition
 class Particle:
 	G = 6.674e-11     
 	def __init__(self, p, v, m, dt=1):
