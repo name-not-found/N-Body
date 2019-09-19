@@ -1,21 +1,27 @@
 import math
-
+#composición de una particula
 class Particle:
 	G = 6.674e-11     
-	def __init__(self, p, v, m):
+	def __init__(self, p, v, m, dt=1):
 		self.p = p
 		self.v = v
 		self.m = m
+		self.dt = dt
 
-	def integrate(self, dt, p1, m1):
-		r = self.computeR(p1)
-		u = self.computeU(p1)
+	#def integrate(self, dt, p1, m1):
+	def integrate(self, B):
+		r = self.computeR(B.p)
+		u = self.computeU(B.p)
 		
-		Vx = (self.G*m1*dt/(r**3))*u[0]
-		Vy = (self.G*m1*dt/(r**3))*u[1]
-		Vz = (self.G*m1*dt/(r**3))*u[2]
+		Vx = (self.G*B.m*self.dt/(r**3))*u[0]
+		Vy = (self.G*B.m*self.dt/(r**3))*u[1]
+		Vz = (self.G*B.m*self.dt/(r**3))*u[2]
+
+		self.v[0] += Vx
+		self.v[1] += Vy
+		self.v[2] += Vz
 		
-		self.p = [self.p[0]+(self.v[0]+Vx)*dt, self.p[1]+(self.v[1]+Vy)*dt, self.p[2]+(self.v[2]+Vz)*dt]
+		self.p = [self.p[0]+(self.v[0])*self.dt, self.p[1]+(self.v[1])*self.dt, self.p[2]+(self.v[2])*self.dt]
 
 	def getPosition(self):
 		return self.p
@@ -35,4 +41,8 @@ class Particle:
 			u[i] = b - a
 			i+=1
 		return u
+
+	def setdt(self, dt):
+		self.dt = dt
+
 	
