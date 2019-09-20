@@ -30,30 +30,39 @@ if __name__ == "__main__":
 	v0 = [0., 0., 0.]     #km/s
 	m = 1e7               #kg
 	
-	p1 = [0., 0., 0.] #km
-	v1 = [1., 1., 0.]  #km/s
-	m1 = 1.           #kg
+	p1 = [0., 0., 0.]     #km
+	v1 = [1., 1., 0.]     #km/s
+	m1 = 1.               #kg
 	
-	dt = 1e-2            #sec
+	dt = 1e-2             #sec
 
 	A = classes.Particle(p0, v0, m)
 	B = classes.Particle(p1, v1, m1)
 	
-	B.setdt(dt)
+	# dos particulas
+	particles = [A, B]
+	twoBody= classes.Potencial(particles, dt)
 	
-	x = []
-	y = []
+	fig = plt.figure()
+	ax = fig.add_subplot(111, projection='3d')
 	
-	x.append(0.)
-	y.append(B.getPosition())
+	for t in range(1,100):
+		system = twoBody.integrate(float(t)*dt)
 	
-	#LastX = B.getPosition()[0]
-
+	for  i, particle in enumerate(particles):
+		time, trajectory = particle.getTrajectory()
+		graphics.plotting3D(fig, ax, trajectory, i)
+	
+		
 	#2D
 	"""
+	x = []
+	y = []
 	v = []
 	a = []
 	
+	x.append(0.)
+	y.append(B.getPosition())
 	v.append(B.getVelocity()[0])
 	a.append(0.)
 	v1 = B.getVelocity()[0]
@@ -73,13 +82,21 @@ if __name__ == "__main__":
 		a.append((v1 - lastV)/B.dt)
 	
 	fig, ax = plt.subplots(3)
-	graphics.plotting(fig, ax[0], x, y, "", "", "", "", "distance [$km$]")
-	graphics.plotting(fig, ax[1], x, v, "", "", "", "", "velocity [$km/s$]")
-	graphics.plotting(fig, ax[2], x, a, "", "", "", "time [$sec$]", "acceleration [$km/s^2$]")
+	graphics.plotting2D(fig, ax[0], x, y, "", "", "", "", "distance [$km$]")
+	graphics.plotting2D(fig, ax[1], x, v, "", "", "", "", "velocity [$km/s$]")
+	graphics.plotting2D(fig, ax[2], x, a, "", "", "", "time [$sec$]", "acceleration [$km/s^2$]")
 	"""
 	
-	
 	#3D
+	"""
+	B.setdt(dt)
+	
+	x = []
+	y = []
+	
+	x.append(0.)
+	y.append(B.getPosition())
+	
 	for t in range(1,100):
 		B.integrate(A)
 		x.append(float(t)*dt)
@@ -91,6 +108,7 @@ if __name__ == "__main__":
 		
 	posA = A.getPosition()
 	ax.scatter(posA[0], posA[1], posA[2], marker="o")
-	
+	#graphics.plotting3D(fig, ax, posA)
+	"""
 	
 	plt.show()
