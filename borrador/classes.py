@@ -45,4 +45,49 @@ class Particle:
 	def setdt(self, dt):
 		self.dt = dt
 
+	def getVelocity(self):
+		return self.v
+
+	def computeV(self, B):
+		#calcular la velocidad y ponerla en un vector
+		r = self.computeR(B.p)
+		u = self.computeU(B.p)
+		
+		Vx = (self.G*B.m*self.dt/(r**3))*u[0]
+		Vy = (self.G*B.m*self.dt/(r**3))*u[1]
+		Vz = (self.G*B.m*self.dt/(r**3))*u[2]
+	 	
+		return [Vx,Vy,Vz]
+
+	def updateV(self, v):
+		self.v[0] += v[0]
+		self.v[1] += v[1]
+		self.v[2] += v[2]
+
+	def updatePosition(self):
+		self.p = [self.p[0]+(self.v[0])*self.dt, self.p[1]+(self.v[1])*self.dt, self.p[2]+(self.v[2])*self.dt]
+
+class Potencial:  
+	def __init__(self, system, dt, force):
+		self.system = system #set of particles
+		self.dt = dt #
+		self.force = force
+
+	def integrate(self):
+
+		for particle in self.system:
+			for other in self.system:
+				if other != particle:
+					velocity = particle.computeV(other)
+					particle.updateV(velocity)
+		
+		for particle in self.system:
+			particle.updatePosition()
+			
+		return system 
 	
+
+
+
+
+
