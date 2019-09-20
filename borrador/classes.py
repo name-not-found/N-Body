@@ -66,16 +66,19 @@ class Particle:
 		self.v[1] += v[1]
 		self.v[2] += v[2]
 
-	def updatePosition(self):
+	def updatePosition(self, time):
 		self.p = [self.p[0]+(self.v[0])*self.dt, self.p[1]+(self.v[1])*self.dt, self.p[2]+(self.v[2])*self.dt]
 		self.time.append(time)
 		self.trajectory.append(self.p)
 
+	def getTrajectory(self):
+		return self.time, self.trajectory
+
 class Potencial:  
-	def __init__(self, system, dt, force):
+	def __init__(self, system, dt, time):
 		self.system = system #set of particles
 		self.dt = dt #
-		self.force = force
+		#self.force = force
 
 	def integrate(self, time):
 		for particle in self.system:
@@ -86,7 +89,7 @@ class Potencial:
 		
 		for particle in self.system:
 			particle.updatePosition(time)
-		return system 
+		return self.system 
 	
 
 
