@@ -3,10 +3,12 @@ import math
 class Particle:
 	G = 6.674e-11     
 	def __init__(self, p, v, m, dt=1):
-		self.p = p
-		self.v = v
-		self.m = m
+		self.p = p #position
+		self.v = v #velocity
+		self.m = m #mass
 		self.dt = dt
+		self.history = []
+		self.time = []
 
 	#def integrate(self, dt, p1, m1):
 	def integrate(self, B):
@@ -66,6 +68,8 @@ class Particle:
 
 	def updatePosition(self):
 		self.p = [self.p[0]+(self.v[0])*self.dt, self.p[1]+(self.v[1])*self.dt, self.p[2]+(self.v[2])*self.dt]
+		self.time.append(time)
+		self.history.append(self.p)
 
 class Potencial:  
 	def __init__(self, system, dt, force):
@@ -73,8 +77,7 @@ class Potencial:
 		self.dt = dt #
 		self.force = force
 
-	def integrate(self):
-
+	def integrate(self, time):
 		for particle in self.system:
 			for other in self.system:
 				if other != particle:
@@ -82,8 +85,7 @@ class Potencial:
 					particle.updateV(velocity)
 		
 		for particle in self.system:
-			particle.updatePosition()
-			
+			particle.updatePosition(time)
 		return system 
 	
 
