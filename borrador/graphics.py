@@ -11,7 +11,7 @@ def plotting2D(fig, ax, time, y1, titulo, filename, caption, xlabel, ylabel):
 	ax.grid()
 
 def plotting3D(fig, ax, y, i):
-	c = ["g", "r", "b"]
-	m = ["o", "*", "d", ".", ",", "v", "p", "P", "7"]
+	c = ["g", "r", "b", "c", "m", "y", "k", "w", "0.75"]
+	m = ["o", "*", "d", ".", "v", "p", "P", "h", "D"]
 	for point in y:
-		ax.scatter(point[0], point[1], point[2], marker=m[i], c=c[i])
+		ax.scatter(point[0], point[1], point[2], marker=m[i%len(m)], c=c[i%len(c)])

@@ -26,24 +26,60 @@ import math
 import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
-	p0 = [.001, 0., 0.]   #m
-	v0 = [0., 0., 0.]     #m/s
-	m  = 1e1              #kg
 	
-	p1 = [0., 0., 0.]     #m
-	v1 = [0., 0., 1e-3]     #m/s
-	m1 = 1e1              #kg
+	p0 = [.001, 0., 0.]        #m
+	v0 = [0., 0., 0.]          #m/s
+	m  = 1e1                   #kg
 	
-	dt = 0.05             #sec
+	p1 = [0., 0., 0.]          #m
+	v1 = [0., 0., 1e-3]        #m/s
+	m1 = 1e1                   #kg
 	
-	lenTime=1.            #sec
+	dt = 1.                    #sec
+	
+	lenTime=3600.*24*365       #sec
 	n_steps = int(lenTime/dt)
 
 	A = classes.Particle(p0, v0, m)
 	B = classes.Particle(p1, v1, m1)
 	
-	# tres particulas 3D
+	# sistema solar
 	
+	sun = classes.Particle([0,0,0],[0,0,0], 2e30)
+	mercury = classes.Particle([0,5.7e10,0],[47000,0,0], 3.285e23)
+	venus = classes.Particle([0, 1.1e11, 0], [35000,0,0], 4.8e24)
+	earth = classes.Particle([0., 1.5e11, 0], [30000, 0, 0], 6e24)
+	mars = classes.Particle([0.0,2.2e11,0.0],[24000.0,0.0,0.0],2.4e24)
+	jupiter = classes.Particle([0.0, 7.7e11, 0.0] ,[13000, 0.0, 0.0],1e28)
+	saturn = classes.Particle([0,1.4e12,0], [9000,0,0],5.7e26)
+	uranus = classes.Particle([0,2.8e12,0], [6835,0,0], 8.7e25)
+	neptune = classes.Particle([0,4.5e12,0], [5477,0,0],1e26)
+	pluto = classes.Particle([0,3.7e12,0], [4748,0,0],1.3e22)
+	
+	#particles = [sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto]
+	particles = [sun, earth]
+	twoBody= classes.Potencial(particles, dt)
+	
+	fig = plt.figure()
+	ax = fig.add_subplot(111, projection='3d')
+	
+	skip = 0
+	save = False
+	for t in range(1,n_steps):
+		if skip == 1000:
+			skip = 0
+			save = True
+		system = twoBody.integrate(float(t)*dt, save)
+		save = False
+		skip += 1
+	
+	
+	for  i, particle in enumerate(particles):
+		time, trajectory = particle.getTrajectory()
+		graphics.plotting3D(fig, ax, trajectory, i)
+	
+	# tres particulas 3D
+	"""
 	C = classes.Particle([0., 0.001, 0.], [0., 0., 0.] , 1e1)
 	
 	particles = [A, B, C]
@@ -58,6 +94,7 @@ if __name__ == "__main__":
 	for  i, particle in enumerate(particles):
 		time, trajectory = particle.getTrajectory()
 		graphics.plotting3D(fig, ax, trajectory, i)
+	"""
 	
 	# dos particulas 3D
 	"""
