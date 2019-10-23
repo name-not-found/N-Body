@@ -28,12 +28,12 @@ import matplotlib.pyplot as plt
 if __name__ == "__main__":
 	
 	## ALpha Centauri A
-	p0 = [0., 0., 0.]            #km
+	p0 = [0., 0., 0.]            #UA
 	v0 = [0., 0., 0.]            #m/s
 	m  = 1.1                     #masas solares
 	
 	## ALpha Centauri B
-	p1 = [1.67e9., 0., 0.]       #km
+	p1 = [11.2, 0., 0.]       #UA
 	v1 = [0., 0, 0.]             #km/seg
 	m1 = 0.907                   #masas solares
 	
@@ -48,8 +48,7 @@ if __name__ == "__main__":
 	particles = [A, B]
 	twoBody= classes.Potencial(particles, dt)
 	
-	fig = plt.figure()
-	ax = fig.add_subplot(111, projection='3d')
+	fig, ax = plt.subplots()
 	
 	#
 	skip = 0
@@ -64,6 +63,6 @@ if __name__ == "__main__":
 	
 	for  i, particle in enumerate(particles):
 		time, trajectory = particle.getTrajectory()
-		graphics.plotting3D(fig, ax, trajectory, i)
+		graphics.plotting2D_multiple(fig, ax, trajectory, i)
 	
 	plt.show()
