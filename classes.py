@@ -1,7 +1,7 @@
 import math
 #particle composition
 class Particle:
-	G = 6.674e-11     
+	G = 3.9648449178363156e-14    
 	def __init__(self, p, v, m, dt=1):
 		self.p = p #position
 		self.v = v #velocity
