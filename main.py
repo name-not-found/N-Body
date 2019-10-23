@@ -28,18 +28,18 @@ import matplotlib.pyplot as plt
 if __name__ == "__main__":
 	
 	## ALpha Centauri A
-	p0 = [0., 0., 0.]            #UA
-	v0 = [0., 0., 0.]            #m/s
-	m  = 1.1                     #masas solares
+	p0 = [0., 0.]            #UA
+	v0 = [0., 0.]            #m/s
+	m  = 1.432                   #masas solares
 	
 	## ALpha Centauri B
-	p1 = [11.2, 0., 0.]       #UA
-	v1 = [0., 0, 0.]             #km/seg
-	m1 = 0.907                   #masas solares
+	p1 = [11.2, 0.]          #UA
+	v1 = [0., 9.8402e-7]     #km/seg
+	m1 = 1.387                   #masas solares
 	
 	dt = 1.                      #sec
 	
-	lenTime=3600.*24*365         #sec
+	lenTime=3600.*24*60         #sec
 	n_steps = int(lenTime/dt)
 
 	A = classes.Particle(p0, v0, m)
