@@ -24,22 +24,23 @@ import graphics
 #libraries
 import math
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 if __name__ == "__main__":
 	
 	## ALpha Centauri A
 	p0 = [0., 0.]            #UA
 	v0 = [0., 0.]            #m/s
-	m  = 1.432                   #masas solares
+	m  = 1.432               #masas solares
 	
 	## ALpha Centauri B
 	p1 = [11.2, 0.]          #UA
 	v1 = [0., 9.8402e-7]     #km/seg
-	m1 = 1.387                   #masas solares
+	m1 = 1.387               #masas solares
 	
-	dt = 1.                      #sec
+	dt = .01                      #sec
 	
-	lenTime=3600.*24*60         #sec
+	lenTime=3600.*24*10         #sec
 	n_steps = int(lenTime/dt)
 
 	A = classes.Particle(p0, v0, m)
@@ -53,14 +54,15 @@ if __name__ == "__main__":
 	#
 	skip = 0
 	save = False
-	for t in range(1,n_steps):
+	for t in tqdm(range(1,n_steps)):
 		if skip == 1000:
 			skip = 0
 			save = True
 		system = twoBody.integrate(float(t)*dt, save)
 		save = False
 		skip += 1
-	
+		pass
+
 	for  i, particle in enumerate(particles):
 		time, trajectory = particle.getTrajectory()
 		graphics.plotting2D_multiple(fig, ax, trajectory, i)
