@@ -1,4 +1,4 @@
-# Estabilidad de trayectorias en sistemas binarios
+# N-cuerpos
 
 Actualmente el estudio del universo a través de diversos modelos cosmológicos demanda la creación de software robustos y de fácil aplicación que permitan representar sus resultados, para poder ser comparados con datos observacionales; esto conlleva inmediatamente a resolver numéricamente los sistemas de ecuaciones adecuados para la dinámica de N-cuerpos que interactúan gravitacionalmente. En particular una simulación computacional de N-cuerpos es un software informático cuyo fin es recrear un modelo abstracto para las partículas que componen un sistema físico; los resultados de la simulaciones proporcionan información acerca de la dinámica de las partículas junto con otras propiedades de interés del sistema.
 
