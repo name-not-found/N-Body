@@ -23,8 +23,8 @@ Favor de ver el archivo [requirements.txt](requirements.txt) para mas detalles.
 * **Gilberto Carlos Dominguez Aguilar** - *Estudiante* - [nomadae](https://github.com/nomadae)
 
 
-Tabién ver la lista [contribuidores](https://github.com/name-not-found/N-Body/contributors) de quienes participaron en el proyecto.
+También ver la lista de [contribuidores](https://github.com/name-not-found/N-Body/contributors) quienes participaron en el proyecto.
 
 ## Licencia
 
-This project is licensed under the GNU General Public License - see the [LICENSE.md](LICENSE) file for details
+This project is licensed under the GNU General Public License - see the [LICENSE](LICENSE) file for details
