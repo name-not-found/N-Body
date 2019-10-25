@@ -16,15 +16,15 @@ Favor de ver el archivo [requirements.txt](requirements.txt) para mas detalles.
 
 ## Autores
 
-* **Angélica Nayeli Rivas Bedolla** - *Estudiante* - [IcaRiBe](https://github.com/IcaRiBe)
+* **Angélica Nayeli Rivas Bedolla** - *Estudiante* - [icaribe](https://github.com/IcaRiBe)
 
 * **Pablo Clemente Moreno** - *Estudiante* - [pabloclemxnte](https://github.com/pabloclemxnte)
 
 * **Gilberto Carlos Dominguez Aguilar** - *Estudiante* - [nomadae](https://github.com/nomadae)
 
 
-Tabién ver la lista [contribuidores](https://github.com/name-not-found/N-Body/contributors) de quienes participaron en el proyecto.
+También ver la lista de [contribuidores](https://github.com/name-not-found/N-Body/contributors) quienes participaron en el proyecto.
 
 ## Licencia
 
-This project is licensed under the GNU General Public License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GNU General Public License - see the [LICENSE](LICENSE) file for details
