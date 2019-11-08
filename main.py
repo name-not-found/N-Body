@@ -29,18 +29,18 @@ from tqdm import tqdm
 if __name__ == "__main__":
 	
 	## ALpha Centauri A
-	p0 = [0., 0.]            #UA
-	v0 = [0., 0.]            #m/s
+	p0 = [0.0, 0.0,0.0]      #UA
+	v0 = [0.0, 0.0,0.0]      #m/s
 	m  = 1.432               #masas solares
 	
 	## ALpha Centauri B
-	p1 = [11.2, 0.]          #UA
-	v1 = [0., 9.8402e-7]     #km/seg
-	m1 = 1.387               #masas solares
+	p1 = [11.2, 0.0,0.0]         #UA
+	v1 = [0., 9.8402e-7,0.0]     #km/seg
+	m1 = 1.387                   #masas solares
 	
-	dt = .01                      #sec
+	dt = .1                      #sec
 	
-	lenTime=3600.*24*10         #sec
+	lenTime=3600*24*9.604559     #sec
 	n_steps = int(lenTime/dt)
 
 	A = classes.Particle(p0, v0, m)
@@ -49,9 +49,9 @@ if __name__ == "__main__":
 	particles = [A, B]
 	twoBody= classes.Potencial(particles, dt)
 	
-	fig, ax = plt.subplots()
+	fig = plt.figure()
+	ax = fig.add_subplot(111, projection='3d')
 	
-	#
 	skip = 0
 	save = False
 	for t in tqdm(range(1,n_steps)):
@@ -65,6 +65,6 @@ if __name__ == "__main__":
 
 	for  i, particle in enumerate(particles):
 		time, trajectory = particle.getTrajectory()
-		graphics.plotting2D_multiple(fig, ax, trajectory, i)
+		graphics.plotting3D(fig, ax, trajectory, i)
 	
 	plt.show()
