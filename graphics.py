@@ -15,3 +15,9 @@ def plotting3D(fig, ax, y, i):
 	m = ["o", "*", "d", ".", "v", "p", "P", "h", "D"]
 	for point in y:
 		ax.scatter(point[0], point[1], point[2], marker=m[i%len(m)], c=c[i%len(c)])
+
+def plotting2D_multiple(fig, ax, y, i):
+	c = ["g", "r", "b", "c", "m", "y", "k", "w", "0.75"]
+	m = ["o", "*", "d", ".", "v", "p", "P", "h", "D"]
+	for point in y:
+		ax.scatter(point[0], point[1], marker=m[i%len(m)], c=c[i%len(c)])
