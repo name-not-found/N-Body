@@ -1,6 +1,10 @@
-# N-cuerpos
+# Simulacion Trayectoria Alpha Centauri
 
-Actualmente el estudio del universo a través de diversos modelos cosmológicos demanda la creación de software robustos y de fácil aplicación que permitan representar sus resultados, para poder ser comparados con datos observacionales; esto conlleva inmediatamente a resolver numéricamente los sistemas de ecuaciones adecuados para la dinámica de N-cuerpos que interactúan gravitacionalmente. En particular una simulación computacional de N-cuerpos es un software informático cuyo fin es recrear un modelo abstracto para las partículas que componen un sistema físico; los resultados de la simulaciones proporcionan información acerca de la dinámica de las partículas junto con otras propiedades de interés del sistema.
+Se busca crear una simulación del sistema estelar binario Alpha Centauri por medio del modelo N-cuerpos para comprobar de manera computacional la estabilidad de ambos cuerpos dentro del sistema.
+
+# Alpha Centauri
+
+Alpha Centauri es el sistema estelar más cercano al Sol, ubicado a una distancia de solo 4.37 años luz o 1.34 parsecs de la Tierra. El sistema consiste en Alpha Centauri A y Alpha Centauri B. A veces se lo conoce como Alpha Centauri AB (α Cen AB).
 
 ### Prerequisitos
 
@@ -16,7 +20,7 @@ Favor de ver el archivo [requirements.txt](requirements.txt) para mas detalles.
 
 ## Autores
 
-* **Angélica Nayeli Rivas Bedolla** - *Estudiante* - [icaribe](https://github.com/IcaRiBe)
+* **Angélica Nayeli Rivas Bedolla** - *Estudiante* - [IcaRiBe](https://github.com/IcaRiBe)
 
 * **Pablo Clemente Moreno** - *Estudiante* - [pabloclemxnte](https://github.com/pabloclemxnte)
 
